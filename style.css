@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+	font-family: "Times-New-Roman", Times, Serif;
+	font-size: 100%;
+	background-image: url("Images/footer_lodyas.png"); /*Source http://subtlepatterns.com/dark-sharp-edges/ */
+}
+
+#ocwrap {
+	width: 90%;
+	margin: auto;
+	min-width: 640px;
+	max-width: 1920px;
+	min-height: 480px;
+}
+
+#logo {
+	float: left;
+	width: 50px;
+}
+
+header, footer, #logo {
+	height: 50px;
+}
+
+header, footer {
+	line-height: 50px;
+	font-family: Arial, Helvetica, Sans-Serif;
+	background-color: DarkGray;
+	
+	margin: 25px 0px;
+}
+
+
+header#top {
+}
+
+header#bar {
+	padding: 20px;
+}
+
+/*Styling for top bar links*/
+header#bar a {
+	/*all variations inherit from this, overriding where necessary*/
+	color: black;
+	text-decoration: none;
+	background-color: lightgrey;
+	padding: 5px;
+	width: 50px;
+	transition: background-color 0.5s;
+}
+
+header#bar a:hover {
+	background-color: lightblue;
+}
+
+header#bar a:link {
+}
+
+header#bar a:active {
+	background-color: red;
+}
+
+header#bar a:visited {
+}
+
+footer {
+		/*text-align: center;*/
+}
+
+main {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-content: center;
+	align-content: center;
+	width: 90%;
+	min-width: 640px;
+	min-height: 480px;
+	margin: auto;
+	background-color: white;
+	padding: 5px;
+}
+
+nav#folders {
+}
+
+nav#lists {
+}
+
+nav#padder{
+}
+
+aside#linfo {
+}
+
+#listView {
+}
+
+.loginBox,.settingsBox {
+	margin: auto;
+	background-color: lightblue;
+	height: 250px;
+	width: 250px;
+	padding: 25px;
+	border: 10px solid white;
+	
+}
+
+
+#LoginWrapper {
+	margin: auto;
+	background-color: lime;
+	padding: 25px;
+	height: 300px;
+}
