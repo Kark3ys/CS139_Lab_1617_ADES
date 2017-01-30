@@ -1,0 +1,80 @@
+DROP TABLE users;
+DROP TABLE listRel;
+DROP TABLE folderRel;
+DROP TABLE folders;
+DROP TABLE lists;
+DROP TABLE items;
+DROP TABLE folderChild;
+
+CREATE TABLE users
+(
+	userID INT NOT NULL UNIQUE PRIMARY KEY,
+	username VARCHAR(30) NOT NULL UNIQUE,
+	fname VARCHAR(30) NOT NULL,
+	pass VARCHAR(30) NOT NULL,
+	theme INT,
+	email VARCHAR(50) NOT NULL UNIQUE,
+	createTS DATETIME DEFAULT DATETIME('now'),
+	lastlogTS DATETIME
+);
+
+CREATE TABLE folders
+(
+	folderID INT NOT NULL UNIQUE PRIMARY KEY,
+	name VARCHAR(30) NOT NULL,
+	defperm INT NOT NULL,
+	lastTS DATETIME
+);
+
+
+CREATE TABLE lists
+(
+	listID INT NOT NULL UNIQUE PRIMARY KEY,
+	name VARCHAR(30),
+	defperm INT,
+	lastTS DATETIME
+);
+
+CREATE TABLE items
+(
+	itemID INT NOT NULL PRIMARY KEY,
+	listID INT NOT NULL,
+	value VARCHAR(30) NOT NULL,
+	checked BOOLEAN DEFAULT false NOT NULL
+);
+
+CREATE TABLE listRel
+(
+	userID INT NOT NULL,
+	listID INT NOT NULL,
+	perm INT,
+	permChangeTS DATETIME,
+	fav BOOLEAN DEFAULT false NOT NULL,
+	PRIMARY KEY(userID, listID),
+	FOREIGN KEY(userID) REFERENCES users(userID),
+	FOREIGN KEY(listID) REFERENCES lists(listID)
+);
+
+CREATE TABLE folderRel
+(
+	userID INT NOT NULL,
+	folderID INT NOT NULL,
+	perm INT NOT NULL,
+	permEditTS DATETIME,
+	fav BOOLEAN DEFAULT false NOT NULL,
+	PRIMARY KEY(userID, folderID),
+	FOREIGN KEY(userID) REFERENCES users(userID),
+	FOREIGN KEY(folderID) REFERENCES folders(folderID)
+);
+
+CREATE TABLE folderChild
+(
+	folderID INT NOT NULL,
+	childID INT NOT NULL,
+	isFolder BOOLEAN DEFAULT false NOT NULL,
+	PRIMARY KEY(folderID, childID),
+	FOREIGN KEY(folderID) REFERENCES folders(folderID),
+	FOREIGN KEY(childID) REFERENCES lists(listID), 
+	FOREIGN KEY(childID) REFERENCES folders(folderID)
+	
+);
