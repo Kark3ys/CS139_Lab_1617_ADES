@@ -19,51 +19,44 @@ body {
 #logo {
 	float: left;
 	width: 50px;
+	margin-right: 10px;
 }
 
-header, footer, #logo {
+header, footer, #logo, nav#top {
 	height: 50px;
 }
 
-header, footer {
+header, footer, nav#top {
 	line-height: 50px;
 	font-family: Arial, Helvetica, Sans-Serif;
 	background-color: DarkGray;
-	
+	padding-left: 10px;
 	margin: 25px 0px;
 }
 
-
-header#top {
-}
-
-header#bar {
-	padding: 20px;
-}
-
 /*Styling for top bar links*/
-header#bar a {
+nav#top a {
 	/*all variations inherit from this, overriding where necessary*/
 	color: black;
 	text-decoration: none;
-	background-color: lightgrey;
+	background-color: lightgray;
 	padding: 5px;
 	width: 50px;
 	transition: background-color 0.5s;
 }
 
-header#bar a:hover {
-	background-color: lightblue;
+nav#top a:hover {
+	background-color: white;
 }
 
-header#bar a:link {
+nav#top a:link {
 }
 
-header#bar a:active {
-	background-color: red;
+nav#top a:active {
+	background-color: darkgray;
 }
 
-header#bar a:visited {
+nav#top a:visited {
 }
 
 footer {
@@ -71,12 +64,6 @@ footer {
 }
 
 main {
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-wrap: wrap;
-	flex-wrap: wrap;
-	-webkit-align-content: center;
-	align-content: center;
 	width: 90%;
 	min-width: 640px;
 	min-height: 480px;
@@ -91,13 +78,11 @@ nav#folders {
 nav#lists {
 }
 
-nav#padder{
-}
-
-aside#linfo {
-}
-
 #listView {
+}
+
+#listTitle {
+	width: 100%
 }
 
 .loginBox,.settingsBox {
@@ -107,13 +92,18 @@ aside#linfo {
 	width: 250px;
 	padding: 25px;
 	border: 10px solid white;
-	
 }
 
 
-#LoginWrapper {
-	margin: auto;
-	background-color: lime;
-	padding: 25px;
-	height: 300px;
+#BoxWrapper {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-content: center;
+	align-content: center;
+	background-color: inherit;
+	width: 100%;
+	min-width: 635px;
+	min-height: 475px;
 }
