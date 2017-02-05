@@ -4,14 +4,6 @@ VALUES('SomeUserName', 'Hello', 'Pass', 3, 'some@gmail.com'),
 	('Idunno', 'Uses Lists', 'password', 2, 'dunno@microsoft.live.co.uk'),
 	('A', 'B', 'C', 0, 'D');
 
-INSERT INTO folders(name, defperm)
-VALUES
-	('Folder 1', 0),
-	('New Folder', 2),
-	('abcd', 2),
-	('Unlisted Folder', 1),
-	('Something Else', 0);
-
 INSERT INTO lists(name)
 VALUES ('nEW lIST'), ('A list'), ('Another List'), ('Something Else List');
 
