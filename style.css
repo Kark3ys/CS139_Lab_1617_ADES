@@ -1,5 +1,12 @@
+/*global styling*/
 * {
     box-sizing: border-box;
+
+    /*Colour palette/other constants*/
+    /*Later we can have multiple CSS files, each with simply these colour constants changed to mathc the new theme - these can be selectivley imported using JS*/
+    --mainGrey: DarkGray;
+	--lighterGrey: lightgray;
+	--testColor: red;
 }
 
 body {
@@ -8,6 +15,7 @@ body {
 	background-image: url("Images/footer_lodyas.png"); /*Source http://subtlepatterns.com/dark-sharp-edges/ */
 }
 
+/*page structure styling*/
 #ocwrap {
 	width: 90%;
 	margin: auto;
@@ -29,34 +37,9 @@ header, footer, #logo, nav#top {
 header, footer, nav#top {
 	line-height: 50px;
 	font-family: Arial, Helvetica, Sans-Serif;
-	background-color: DarkGray;
+	background-color: var(--mainGrey);
 	padding-left: 10px;
 	margin: 25px 0px;
-}
-
-/*Styling for top bar links*/
-nav#top a {
-	/*all variations inherit from this, overriding where necessary*/
-	color: black;
-	text-decoration: none;
-	background-color: lightgray;
-	padding: 5px;
-	width: 50px;
-	transition: background-color 0.5s;
-}
-
-nav#top a:hover {
-	background-color: white;
-}
-
-nav#top a:link {
-}
-
-nav#top a:active {
-	background-color: darkgray;
-}
-
-nav#top a:visited {
 }
 
 footer {
@@ -72,6 +55,51 @@ main {
 	padding: 5px;
 }
 
+/*Styling for top bar links*/
+nav#top a {
+	/*all variations inherit from this, overriding where necessary*/
+	color: black;
+	text-decoration: none;
+	background-color: var(--lighterGrey);
+	padding: 5px;
+	width: 50px;
+	transition: background-color 0.5s;
+}
+
+nav#top a:hover {
+	background-color: white;
+}
+
+nav#top a:link {
+}
+
+nav#top a:active {
+	background-color: var(--mainGrey);
+}
+
+nav#top a:visited {
+}
+
+/*In-page link styling*/
+a {
+	text-decoration: none;
+	color: blue;
+}
+
+a:visited {
+	color: purple;
+}
+
+a:hover {
+	color: inherit;
+}
+
+a:active {
+	color: red;
+}
+
+/*------------------------------------------------------------------*/
+/*MAIN - Specific Styles*/
 nav#folders {
 }
 
@@ -107,3 +135,5 @@ nav#lists {
 	min-width: 635px;
 	min-height: 475px;
 }
+
+/*Colour selectors for theme TO DO at some point*/
