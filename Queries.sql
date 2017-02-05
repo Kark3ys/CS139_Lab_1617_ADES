@@ -21,3 +21,4 @@ SELECT COUNT(itemID) FROM items WHERE
 items.itemID + lsits.listID AND
 lists.listID = listRel.listID AND
 listRel.userID = <insert_user_ID_here>;
+
