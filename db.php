@@ -4,11 +4,11 @@
 class Database {
 function exec($query) {
 	 	 $db = $this->getConnection();
-	 	 $db.exec($query);
+	 	 $db->exec($query);
 }
 function query($query) {
 	 	 $db = $this->getConnection();
-	 	 $result = $db.query($query);
+	 	 $result = $db->query($query);
 	 	 return $result;
 }
 private function getConnection() {

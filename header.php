@@ -13,10 +13,10 @@ echo '<!DOCTYPE html>
 		<h1>ToDo list</h1>
 		</header>
 		<nav id="top">
-		<a href="index.html">Home</a>
-		<a href="login.html">Login</a>
-		<a href="register.html">Register</a>
-		<a href="settings.html">Settings</a>
+		<a href="index.php">Home</a>
+		<a href="login.php">Login</a>
+		<a href="register.php">Register</a>
+		<a href="settings.php">Settings</a>
 		<a href="folder.php">Folder</a>
 		<a href="list.php">List</a>
 		</nav>
