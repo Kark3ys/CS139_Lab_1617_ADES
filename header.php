@@ -22,4 +22,4 @@ echo '<!DOCTYPE html>
 		</nav>
 		<main>
 '
->
+?>
