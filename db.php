@@ -12,7 +12,7 @@ function query($query) {
 	 	 return $result;
 }
 private function getConnection() {
-	 	 $conn = new SQLite3('forum.db');
+	 	 $conn = new SQLite3('todo.db');
 	 	 return $conn;
 }
 }
