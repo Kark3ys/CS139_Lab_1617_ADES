@@ -1,4 +1,4 @@
-<?php require "header.php" ?>
+<?php require "header.php"; ?>
 				<div id="BoxWrapper">
 					<div class="loginBox">
 						<p>Enter your login details below to proceed to the site: </p>
@@ -23,4 +23,4 @@
 					</div>
 
 				</div>
-<?php require "footer.php" ?>
+<?php require "footer.php"; ?>

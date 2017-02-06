@@ -1,4 +1,4 @@
-<?php require "header.php" ?>
+<?php require "header.php"; ?>
 		<div id="BoxWrapper">
 		<div class="settingsBox">
 			<h2>Change password</h2>
@@ -35,4 +35,4 @@
 			
 		</div>
 		</div>
-<?php require "footer.php" ?>
+<?php require "footer.php"; ?>

@@ -21,7 +21,7 @@ echo '<!DOCTYPE html>
 		<a href="list.php">List</a>
 		</nav>
 		<main>
-'
+';
 error_reporting(E_ALL);
 ini_set(“display_errors”, 1);
 ?>

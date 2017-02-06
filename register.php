@@ -1,4 +1,4 @@
-<?php require "header.php" ?>
+<?php require "header.php"; ?>
 			<div id="BoxWrapper">
 				<div class="loginBox" id="login-redirect">
 					<h2>Already Registered?</h2><br />
@@ -24,4 +24,4 @@
 				</div>
 			</div>
 		</main>
-<?php require "footer.php" ?>
+<?php require "footer.php"; ?>

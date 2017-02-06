@@ -1,4 +1,4 @@
-<?php require "header.php" ?>
+<?php require "header.php"; ?>
 		<form>
 		<h2 id="listTitle">Shopping</h2>
 		<aside id="listMeta">
@@ -25,4 +25,4 @@
 			</table>
 		</div>
 		</form>
-<?php require "footer.php" ?>
+<?php require "footer.php"; ?>
