@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Login</title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
-	</head>
-	<body>
-		<div id="ocwrap">
-
-			<header>
-			<div id="logo"><img src="Images/LogoV2.png"></div>
-			<h1>ToDo list</h1>
-			</header>
-			<nav id="top">
-			<!--Navigation-->
-			<a href="index.html">Home</a>
-			<a href="login.html">Login</a>
-			<a href="register.html">Register</a>
-			<a href="settings.html">Settings</a>
-			</nav>
-				
-
-
-			<!--Main content-->
-			<main>
+<?php require "header.php"; ?>
 				<div id="BoxWrapper">
 					<div class="loginBox">
 						<p>Enter your login details below to proceed to the site: </p>
@@ -48,14 +23,4 @@
 					</div>
 
 				</div>
-			</main>
-
-
-			<!--Footer-->
-			<footer>
-			</footer>
-
-
-		</div>
-	</body>
-</html>
+<?php require "footer.php"; ?>

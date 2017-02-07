@@ -1,5 +1,12 @@
+/*global styling*/
 * {
     box-sizing: border-box;
+
+    /*Colour palette/other constants*/
+    /*Later we can have multiple CSS files, each with simply these colour constants changed to mathc the new theme - these can be selectivley imported using JS*/
+    --mainGrey: DarkGray;
+	--lighterGrey: lightgray;
+	--testColor: red;
 }
 
 body {
@@ -8,6 +15,7 @@ body {
 	background-image: url("Images/footer_lodyas.png"); /*Source http://subtlepatterns.com/dark-sharp-edges/ */
 }
 
+/*page structure styling*/
 #ocwrap {
 	width: 90%;
 	margin: auto;
@@ -19,51 +27,19 @@ body {
 #logo {
 	float: left;
 	width: 50px;
+	margin-right: 10px;
 }
 
-header, footer, #logo {
+header, footer, #logo, nav#top {
 	height: 50px;
 }
 
-header, footer {
+header, footer, nav#top {
 	line-height: 50px;
 	font-family: Arial, Helvetica, Sans-Serif;
-	background-color: DarkGray;
-	
+	background-color: var(--mainGrey);
+	padding-left: 10px;
 	margin: 25px 0px;
-}
-
-
-header#top {
-}
-
-header#bar {
-	padding: 20px;
-}
-
-/*Styling for top bar links*/
-header#bar a {
-	/*all variations inherit from this, overriding where necessary*/
-	color: black;
-	text-decoration: none;
-	background-color: lightgrey;
-	padding: 5px;
-	width: 50px;
-	transition: background-color 0.5s;
-}
-
-header#bar a:hover {
-	background-color: lightblue;
-}
-
-header#bar a:link {
-}
-
-header#bar a:active {
-	background-color: red;
-}
-
-header#bar a:visited {
 }
 
 footer {
@@ -71,12 +47,6 @@ footer {
 }
 
 main {
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-wrap: wrap;
-	flex-wrap: wrap;
-	-webkit-align-content: center;
-	align-content: center;
 	width: 90%;
 	min-width: 640px;
 	min-height: 480px;
@@ -85,19 +55,62 @@ main {
 	padding: 5px;
 }
 
+/*Styling for top bar links*/
+nav#top a {
+	/*all variations inherit from this, overriding where necessary*/
+	color: black;
+	text-decoration: none;
+	background-color: var(--lighterGrey);
+	padding: 5px;
+	width: 50px;
+	transition: background-color 0.5s;
+}
+
+nav#top a:hover {
+	background-color: white;
+}
+
+nav#top a:link {
+}
+
+nav#top a:active {
+	background-color: var(--mainGrey);
+}
+
+nav#top a:visited {
+}
+
+/*In-page link styling*/
+a {
+	text-decoration: none;
+	color: blue;
+}
+
+a:visited {
+	color: purple;
+}
+
+a:hover {
+	color: inherit;
+}
+
+a:active {
+	color: red;
+}
+
+/*------------------------------------------------------------------*/
+/*MAIN - Specific Styles*/
 nav#folders {
 }
 
 nav#lists {
 }
 
-nav#padder{
-}
-
-aside#linfo {
-}
-
 #listView {
+}
+
+#listTitle {
+	width: 100%
 }
 
 .loginBox,.settingsBox {
@@ -107,13 +120,20 @@ aside#linfo {
 	width: 250px;
 	padding: 25px;
 	border: 10px solid white;
-	
 }
 
 
-#LoginWrapper {
-	margin: auto;
-	background-color: lime;
-	padding: 25px;
-	height: 300px;
+#BoxWrapper {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-content: center;
+	align-content: center;
+	background-color: inherit;
+	width: 100%;
+	min-width: 635px;
+	min-height: 475px;
 }
+
+/*Colour selectors for theme TO DO at some point*/

@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>ToDo.list</title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
-	</head>
-	<body>
-<div id="ocwrap">
-		<header>
-		<div id="logo"><img src="Images/LogoV2.png"></div>
-		<h1>ToDo list</h1>
-		</header>
-		<nav id="top">
-		<a href="index.html">Home</a>
-		<a href="login.html">Login</a>
-		<a href="register.html">Register</a>
-		<a href="settings.html">Settings</a>
-		</nav>
-		<main>
+<?php require "header.php"; ?>
 		<div id="BoxWrapper">
 		<div class="settingsBox">
 			<h2>Change password</h2>
@@ -54,12 +35,4 @@
 			
 		</div>
 		</div>
-		</main>
-		
-		<footer>
-		</footer>
-		
-</div>
-
-	</body>
-</html>
+<?php require "footer.php"; ?>
