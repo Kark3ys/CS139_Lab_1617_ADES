@@ -2,7 +2,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set(“display_errors”, 1);
-	require 'db.php';
+	require 'databse.php';
 	$db = new Database();
 	echo '<table id="lists">';
 	$result = $db->query("SELECT lists.listID FROM lists 
