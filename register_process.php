@@ -21,6 +21,8 @@ if(!empty($_POST["username"])) {
 	}
 }
 ?>
-<?php require "header.php"; ?>
+<html>
+<body>
 An error has occured, click <a href="index.php">here</a> to return to the index page.
-<?php require "footer.php"; ?>
+</body>
+</html>
