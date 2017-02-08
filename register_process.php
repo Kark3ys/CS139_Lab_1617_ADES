@@ -17,7 +17,7 @@ if(!empty($_POST["username"])) {
 		$salt = sha1("B");
 		$encPass = sha1($salt."--A");
 		$db->exec("INSERT INTO users(username, pass, salt, email) 
-			VALUES(".$_POST["username"].",".$encPass.",".$salt.",".$_POST["email"].");");
+			VALUES('".$_POST["username"]."','".$encPass."','".$salt."','".$_POST["email"]."');");
 		header("Location:index.php");
 		exit();
 	//}
