@@ -1,8 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-ini_set(“display_errors”, 1);
 require 'database.php';
-if($_POST["username"]) {
+if(!empty($_POST["username"])) {
 	//Check for duplicate email/username.
 	$db = new Database();
 	if(!empty($db->querySingle("SELECT userID FROM users 
