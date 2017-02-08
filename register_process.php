@@ -5,22 +5,24 @@ require 'database.php';
 if(!empty($_POST["username"])) {
 	//Check for duplicate email/username.
 	$db = new Database();
-	/*if(!empty($db->querySingle("SELECT userID FROM users 
-			WHERE username='".$_POST["username"]."';"))) {
-		header("Location:register.php");
+	$result = $db->querySingle("SELECT * FROM users WHERE username='".$_POST["username"]."';");
+	if(!empty($result)) {
+		header("Location:register.php?err=1");
 		exit();
-	} elseif(!empty($db->querySingle("SELECT userID FROM users 
-			WHERE email='".$_POST["email"]."';"))) {
-		header("Location:register.php");
+	}
+	$result = $db->querySingle("SELECT * FROM users WHERE email='".$_POST["email"]."';");
+	if(!empty($result)) {
+		header("Location:register.php?err=2");
 		exit();
-	} else {*/
-		$salt = sha1("B");
-		$encPass = sha1($salt."--A");
-		$db->exec("INSERT INTO users(username, pass, salt, email) 
-			VALUES('".$_POST["username"]."','".$encPass."','".$salt."','".$_POST["email"]."');");
-		header("Location:index.php");
-		exit();
-	//}
+	}
+	
+	$salt = sha1("B");
+	$encPass = sha1($salt."--A");
+	$db->exec("INSERT INTO users(username, pass, salt, email)
+		VALUES('".$_POST["username"]."','".$encPass."','".$salt."','".$_POST["email"]."');");
+	header("Location:index.php");
+	exit();
+	
 }
 ?>
 <html>
