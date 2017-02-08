@@ -5,7 +5,7 @@ require 'database.php';
 if(!empty($_POST["username"])) {
 	//Check for duplicate email/username.
 	$db = new Database();
-	if(!empty($db->querySingle("SELECT userID FROM users 
+	/*if(!empty($db->querySingle("SELECT userID FROM users 
 			WHERE username='".$_POST["username"]."';"))) {
 		header("Location:register.php");
 		exit();
@@ -13,14 +13,14 @@ if(!empty($_POST["username"])) {
 			WHERE email='".$_POST["email"]."';"))) {
 		header("Location:register.php");
 		exit();
-	} else {
+	} else {*/
 		$salt = sha1("B");
 		$encPass = sha1($salt."--A");
 		$db->exec("INSERT INTO users(username, pass, salt, email) 
 			VALUES(".$_POST["username"].",".$encPass.",".$salt.",".$_POST["email"].");");
 		header("Location:index.php");
 		exit();
-	}
+	//}
 }
 ?>
 <html>
