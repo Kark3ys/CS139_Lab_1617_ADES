@@ -25,21 +25,38 @@ require 'db.php';
 $db = new Database();
 
 //Adding new list
-$sql = 'INSERT INTO lists (name) VALUES ("'.$_POST['listName'].'")';
-$db->execute($sql);
-echo 'Executed:  '.$sql;
+$sql = "INSERT INTO lists (name) VALUES ('".$_POST['listName']."');";
+echo 'Executing:  '.$sql.'   ...<br>';
+$db->exec($sql);
+echo 'Success<br><br>';
+
 //Retrieving the corresponding listID:
-$sql = '';
-$listID = $db.query($sql);
+$sql = "SELECT listID FROM lists WHERE name='".$_POST['listName']."';";
+$listIDs = -1;//shows that there is an error if this is returned in testing
+$listIDs = $db->query($sql);
+$listIDs = $listIDs->fetchArray();
+$listID = $listIDs['listID'];
+echo 'Returned listID : '.$listID.'<br><br>';
+
+//Ensuring relation is established between this new list ^, and the user that created it
+$sql = "INSERT INTO listRel (userID, listID, perm) VALUES (1,".$listID.",0);";
+echo 'Executing:  '.$sql.'   ...<br>';
+$db->exec($sql);
+echo 'Success<br><br>';
+
 
 //Adding provided items
 //Generating sql string:
-$sql = '';
+$sql = "";
 
 
 
-echo '<p>...Completed successfully</p>';
+echo '<br><br><br><hr><p>...ALL Completed successfully</p>';
 
-//Query to check items have been added to db successfully
+///Query to check items have been added to db successfully
+
+///Redirect to LIST viewing page for this list? - something like this using JS:
+//echo "<script>window.location = 'list.php'</script>";
+///Need to try to get it to stow the correct list somehow
 
 ?>

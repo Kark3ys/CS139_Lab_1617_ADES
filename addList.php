@@ -4,11 +4,11 @@
 	<table border="1">
 		<tr><th>Item</th><tr>
 		<?php $i=1?>
-		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
-		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
-		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
-		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
-		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1; ?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1; ?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1; ?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1; ?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1; ?>"></td><tr>
 		<tr><td><center>[*1]</center></td></tr>
 		<tr><td><center>...</center></td></tr>
 	</table>
