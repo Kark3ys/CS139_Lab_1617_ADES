@@ -1,8 +1,15 @@
+<?php
+error_reporting(E_ALL);
+ini_set(“display_errors”, 1);
+?>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Test Page</title>
+<title>demo1</title>
 </head>
 <body>
-Hello
+<?php
+echo "Hello CS139";
+?>
 </body>
 </html>

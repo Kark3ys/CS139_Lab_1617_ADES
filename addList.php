@@ -1,15 +1,19 @@
 <?php include "header.php"; ?>
-<form action="[*2]" method="post">
-  <table border="1">
-    <tr><th>Item</th><tr>
-    <tr><td><input type="text" name="1"></td><tr>
-    <tr><td><input type="text" name="2"></td><tr>
-    <tr><td><center>[*1]</center></td></tr>
-    <tr><td><center>...</center></td></tr>
-  </table>
-  <input type="submit" name="createNewList" value="Save new list">
+<form action="addListProcess.php" method="post">
+	<p>List title: <input type="text" name="listName"></p>
+	<table border="1">
+		<tr><th>Item</th><tr>
+		<?php $i=1?>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
+		<tr><td><input type="text" name="<?php echo $i; $i=$i+1?>"></td><tr>
+		<tr><td><center>[*1]</center></td></tr>
+		<tr><td><center>...</center></td></tr>
+	</table>
+	<input type="submit" value="Create">
 </form>
 
-<p>[*1] Will add PHP here to dynamically add another list item here when the last item has a value entered</p>
-<p>[*2] Will specify the action here one I get this POSTing thing figured out</p>
+<p>[*1] Will add PHP/JS here to dynamically add another list item here when the last item has a value entered</p>
 <?php include "footer.php"; ?>
