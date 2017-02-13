@@ -28,4 +28,8 @@ if (empty($_SESSION["uid"])) {
 	}
 	echo '</table>';
 ?>
+
+<!--Link to add a new list-->
+<a href="addList.php">Add a new list</a>
+
 <?php require "footer.php"; ?>

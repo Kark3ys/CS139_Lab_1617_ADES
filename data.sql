@@ -15,7 +15,7 @@ VALUES ('Public List', 1);
 
 INSERT INTO items(listID, val)
 VALUES (1, 'Carrots'), (1, 'Potatoes'), (2, 'Finish Painting'), (1, 'Lettuce'),
-	(1, 'Onions'), (3, 'Finish Washing'), (4, '£3.49'), (3, 'Clean Car'), (1, 'Ketchup'),
+  (1, 'Onions'), (3, 'Finish Washing'), (4, '£3.49'), (3, 'Clean Car'), (1, 'Ketchup'),
 	(5, 'Public Item');
 
 INSERT INTO listRel(userID, listID, perm)
