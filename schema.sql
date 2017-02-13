@@ -1,10 +1,7 @@
 DROP TABLE users;
 DROP TABLE listRel;
-DROP TABLE folderRel;
-DROP TABLE folders;
 DROP TABLE lists;
 DROP TABLE items;
-DROP TABLE folderChild;
 
 CREATE TABLE users
 (
@@ -22,7 +19,7 @@ CREATE TABLE lists
 (
 	listID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR(30),
-	defperm INTEGER DEFAULT 0,
+	defperm INTEGER DEFAULT 0, /*0 = private; 1 = public*/
 	lastTS TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -39,7 +36,7 @@ CREATE TABLE listRel
 (
 	userID INTEGER NOT NULL,
 	listID INTEGER NOT NULL,
-	perm INTEGER,
+	perm INTEGER, /*0=owner, 1=can edit, 2=can view*/
 	permChangeTS TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	fav BOOLEAN DEFAULT false NOT NULL,
 	PRIMARY KEY(userID, listID),

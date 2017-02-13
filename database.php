@@ -37,10 +37,6 @@ class Database {
 	function lastInsertRowID() {
 		return $this->database->lastInsertRowID();
 	}
-
-	function lastInsertRowID() {
-		return $this->database->lastInsertRowID();
-	}
 	
 	private function getConnection() {
 		$conn = new SQLite3('todo.db');

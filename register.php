@@ -9,10 +9,10 @@
 						Alphanumeric Username and Password Only<br />
 						<label for="username">Username: </label>
 						<input type="text" name="username" pattern="[a-zA-Z0-9]+" maxlength="30" required />
-						<?php if($_GET["err"] == 1) echo " Username Already Exists";?><br />
+						<?php if(!empty($_GET) && $_GET["err"] == 1) echo " Username Already Exists";?><br />
 						<label for="email">E-Mail Address: </label>
 						<input type="email" name="email" maxlength="50" required />
-						<?php if($_GET["err"] == 2) echo " Email Already Registered";?><br />
+						<?php if(!empty($_GET) && $_GET["err"] == 2) echo " Email Already Registered";?><br />
 						<label for="emailc">Reconfirm E-Mail Address: </label>
 						<input type="email" name="emailc" maxlength="50" required /><br />
 						<label for="pass">Password: </label>

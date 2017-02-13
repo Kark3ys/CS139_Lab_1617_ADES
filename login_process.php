@@ -1,5 +1,5 @@
 <?php
-require "database.php";
+require 'database.php';
 $db = new Database();
 if(!empty($_POST["email"])) {
 	$result = $db->querySingle("SELECT * FROM users WHERE email='".$_POST["email"]."'");

@@ -1,9 +1,11 @@
-<?php session_start();?>
+<?php session_start();
+if (empty($_SESSION["uid"])) {
+	header("Location:login.php?err=2");
+	exit();
+}
+?>
 <?php require "header.php"; ?>
 <?php
-error_reporting(E_ALL);
-ini_set(“display_errors”, 1);
-	require 'database.php';
 	$db = new Database();
 	$uid = $_SESSION["uid"];
 	echo '<table id="lists">';
@@ -19,7 +21,7 @@ ini_set(“display_errors”, 1);
 			WHERE lists.listID = ".$list["listID"]."
 			AND listRel.perm = 0");
 			while ($row = $result2->fetchArray()) {
-			echo '<tr><td><a class="fitem" href=list.php?list='.$row["listID"].'>'
+			echo '<tr><td><a class="fitem" href=list.php?lid='.$row["listID"].'>'
 				.$row["name"].'</a></td><td>Last Edited: '.$row["lastTS"].'</td>
 				<td>Owner: '.$row["username"].'</tr>';
 			}

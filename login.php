@@ -4,7 +4,12 @@
 						<p>Enter your login details below to proceed to the site: </p>
 
 						<form action="login_process.php" method="POST">
-							<?php if($_POST["err"] == 1) echo "Email/Password combination invalid<br />";?>
+							<?php 
+							if(!empty($_GET)){
+								if($_GET["err"] == 1) echo "Email/Password combination invalid<br />";
+								if($_GET["err"] == 2) echo "Must be logged in.<br />";
+							}
+							?>
 							<label for="email">Email: </label>
 							<input type="email" name="email">
 							<label for="login">Password: </label>

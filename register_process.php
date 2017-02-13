@@ -20,7 +20,10 @@ if(!empty($_POST["username"])) {
 	$encPass = sha1($salt."--A");
 	$db->exec("INSERT INTO users(username, pass, salt, email)
 		VALUES('".$_POST["username"]."','".$encPass."','".$salt."','".$_POST["email"]."');");
-	header("Location:index.php");
+	$result = $db->lastInsertRowID();
+	session_start();
+	$_SESSION["uid"] = $result;
+	header("Location:folder.php");
 	exit();
 	
 }
