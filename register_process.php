@@ -26,7 +26,4 @@ if(!empty($_POST["username"])) {
 }
 ?>
 <html>
-<body>
-An error has occured, click <a href="index.php">here</a> to return to the index page.
-</body>
-</html>
+<?php include wrongTurn.php?>

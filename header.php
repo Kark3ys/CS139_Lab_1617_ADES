@@ -19,6 +19,7 @@ echo '<!DOCTYPE html>
 		<a href="settings.php">Settings</a>
 		<a href="folder.php">Folder</a>
 		<a href="list.php">List</a>
+		<a style="margin-left: auto; margin-right: 0;" href="logout.php">Logout</a>
 		</nav>
 		<main>
 ';

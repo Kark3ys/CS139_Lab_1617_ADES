@@ -1,14 +1,16 @@
+<?php session_start();?>
 <?php require "header.php"; ?>
 <?php
 error_reporting(E_ALL);
 ini_set(“display_errors”, 1);
 	require 'database.php';
 	$db = new Database();
+	$uid = $_SESSION["uid"];
 	echo '<table id="lists">';
 	$result = $db->query("SELECT lists.listID FROM lists 
 	INNER JOIN listRel ON lists.listID = listRel.listID
 	INNER JOIN users ON listRel.userID = users.userID 
-	WHERE users.userID = 2;");
+	WHERE users.userID = " . $uid . ";");
 	//Get all lists we have access to.
 	while ($list = $result->fetchArray()) {
 		$result2 = $db->query("SELECT * FROM lists
