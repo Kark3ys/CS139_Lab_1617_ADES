@@ -33,6 +33,13 @@ class Database {
 		return $this->database->escapeString($string);
 	}
 	
+<<<<<<< HEAD
+=======
+	function lastInsertRowID() {
+		return $this->database->lastInsertRowID();
+	}
+	
+>>>>>>> databasePHPChange
 	private function getConnection() {
 		$conn = new SQLite3('todo.db');
 		return $conn;
