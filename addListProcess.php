@@ -1,62 +1,54 @@
+<?php
+header('Location: '.$_SERVER['HTTTP_HOST'].'folder.php', 303);//This causes the script to redirect to the specified URL (with 303='see other'), however the script continues to run in the background. 
+//There MAY be issues with attempts to load/view the newly created list before the script has completed IF the script redirects to such a page here. Another solution is commented out below (JS):
+//echo "<script>window.location = 'list.php'</script>";
+
+error_reporting(E_ALL);
+ini_set(“display_errors”, 1);
+?>
 <?php 
 echo '<p>You have just created a list: '.$_POST['listName'].'</p>';
 
-
-echo '<p>Will now proceed to print out all values just entered:</p>';
-
-foreach($_POST as $itemNum => $value) {
-	echo 'Item '.$itemNum.' is '.$value.'<br>';
-	//Currently also includes listName - this could be easily removed using an if
-}
-
-echo '<p>Will now store these values in the database...</p>';
-
-//Add items to db PLAN
+//Add list PLAN:
 	//Create database
 	//SQL string
-		//listName will be isolated and added as 'name' in the db
-		//the listID that corresponds with where this is added will be stored in a variable $listID
-		//all other items in $_POST will be added to the 'items' table, with a reference made wtih the $listID, unles the value is empty
-	//Execute string on db
+		//listName will be isolated and added as 'name' in the database
+	//Execute string on database
 
 
 //Create database
-require 'db.php';
-$db = new Database();
+require 'database.php';
+$database = new Database();
 
 //Adding new list
 $sql = "INSERT INTO lists (name) VALUES ('".$_POST['listName']."');";
 echo 'Executing:  '.$sql.'   ...<br>';
-$db->exec($sql);
+$database->exec($sql);
 echo 'Success<br><br>';
 
 //Retrieving the corresponding listID:
+$listID = $database->lastInsertRowID();
+/*//OLD
 $sql = "SELECT listID FROM lists WHERE name='".$_POST['listName']."';";
-$listIDs = -1;//shows that there is an error if this is returned in testing
-$listIDs = $db->query($sql);
+//$listIDs = -1;//shows that there is an error if this is returned in testing
+$listIDs = $database->query($sql);
 $listIDs = $listIDs->fetchArray();
 $listID = $listIDs['listID'];
+*/
 echo 'Returned listID : '.$listID.'<br><br>';
 
 //Ensuring relation is established between this new list ^, and the user that created it
-$sql = "INSERT INTO listRel (userID, listID, perm) VALUES (1,".$listID.",0);";
+$sql = "INSERT INTO listRel (userID, listID, perm) VALUES (2,".$listID.",0);";
 echo 'Executing:  '.$sql.'   ...<br>';
-$db->exec($sql);
+$database->exec($sql);
 echo 'Success<br><br>';
 
 
-//Adding provided items
-//Generating sql string:
-$sql = "";
+
+
 
 
 
 echo '<br><br><br><hr><p>...ALL Completed successfully</p>';
-
-///Query to check items have been added to db successfully
-
-///Redirect to LIST viewing page for this list? - something like this using JS:
-//echo "<script>window.location = 'list.php'</script>";
-///Need to try to get it to stow the correct list somehow
-
+exit();
 ?>
