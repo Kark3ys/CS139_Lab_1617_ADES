@@ -5,15 +5,20 @@
 					<a class="button" href="login.html">Login</a>
 				</div>
 				<div class="loginBox" id="registration"">
-					<form method="POST" id="regform">
+					<form method="POST" id="regform" action="register_process.php">
+						Alphanumeric Username and Password Only<br />
+						<label for="username">Username: </label>
+						<input type="text" name="username" pattern="[a-zA-Z0-9]+" maxlength="30" required />
+						<?php if(!empty($_GET) && $_GET["err"] == 1) echo " Username Already Exists";?><br />
 						<label for="email">E-Mail Address: </label>
-						<input type="email" name="email" /><br />
+						<input type="email" name="email" maxlength="50" required />
+						<?php if(!empty($_GET) && $_GET["err"] == 2) echo " Email Already Registered";?><br />
 						<label for="emailc">Reconfirm E-Mail Address: </label>
-						<input type="email" name="emailc" /><br />
+						<input type="email" name="emailc" maxlength="50" required /><br />
 						<label for="pass">Password: </label>
-						<input type="password" name="pass" /><br />
+						<input type="password" name="pass" pattern="[a-zA-Z0-9]+" maxlength="20" required /><br />
 						<label for="passc">Reconfirm Password: </label>
-						<input type="password" name="passc" /><br />
+						<input type="password" name="passc" pattern="[a-zA-Z0-9]+" maxlength="20" required /><br />
 						<input type="submit" value="Register" />
 					</form>
 				</div>

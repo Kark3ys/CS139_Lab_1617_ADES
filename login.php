@@ -3,12 +3,18 @@
 					<div class="loginBox">
 						<p>Enter your login details below to proceed to the site: </p>
 
-						<form action="forms_submit" method="post" accept-charset="utf-8">
-							<label>Email: </label>
-							<input type="text" name="Email">
-							<label>Password: </label>
-							<input type="Password" name="pwd">
-							<input type="Submit" name="Login" value="Login">
+						<form action="login_process.php" method="POST">
+							<?php 
+							if(!empty($_GET)){
+								if($_GET["err"] == 1) echo "Email/Password combination invalid<br />";
+								if($_GET["err"] == 2) echo "Must be logged in.<br />";
+							}
+							?>
+							<label for="email">Email: </label>
+							<input type="email" name="email">
+							<label for="login">Password: </label>
+							<input type="password" pattern="[a-zA-Z0-9]+" name="pass">
+							<input type="Submit" name="login" value="login">
 						</form>
 					</div>
 					<div class="loginBox">

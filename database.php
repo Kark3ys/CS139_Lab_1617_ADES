@@ -33,6 +33,7 @@ class Database {
 		return $this->database->escapeString($string);
 	}
 	
+
 	function lastInsertRowID() {
 		return $this->database->lastInsertRowID();
 	}
