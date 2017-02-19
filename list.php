@@ -42,7 +42,9 @@
 	echo "<div id='listView'>\n
 		\t<table>\n
 		\t<tbody>\n";
+	$itemExists=false;
 	while ($item = $listItems->fetchArray()) {
+		$itemExists=true;
 		$iid = $item["itemID"];
 		echo "\t\t<tr id='" .$iid . "'>
 		<td><input type='checkbox' name='" . $iid . "[checked]'";
@@ -50,5 +52,13 @@
 		echo "></td>\n\t\t<td>" . $item["val"] . "</td>\n\t\t</tr>\n\n";
 	}
 	echo "\t</tbody>\n\t</table>\n</div>\n</form>";
+
+	if (!$itemExists) {
+		echo '<p><em>This list has no items...</em></p>';
+	}
+
+	//echo $_GET['lid']; //Testing
+	echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
+	//send lid as GET, and then check ownership of lid in addItemProcess.php IMMEDIATLEY before allowing the user to add the item, redirecting to an error page/back here if not. 
 ?>
 <?php require "footer.php"; ?>

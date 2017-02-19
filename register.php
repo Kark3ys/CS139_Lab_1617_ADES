@@ -2,7 +2,7 @@
 			<div id="BoxWrapper">
 				<div class="loginBox" id="login-redirect">
 					<h2>Already Registered?</h2><br />
-					<a class="button" href="login.html">Login</a>
+					<a class="button" href="login.php">Login</a>
 				</div>
 				<div class="loginBox" id="registration"">
 					<form method="POST" id="regform" action="register_process.php">

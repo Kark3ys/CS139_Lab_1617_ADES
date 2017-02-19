@@ -19,7 +19,7 @@
 					</div>
 					<div class="loginBox">
 						<h2>Need an account?</h2><br />
-						<a class="button" href="register.html">Register</a>
+						<a class="button" href="register.php">Register</a>
 					</div>
 					<div class="loginBox">
 
