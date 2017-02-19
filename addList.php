@@ -1,15 +1,7 @@
 <?php include "header.php"; ?>
-<form action="[*2]" method="post">
-  <table border="1">
-    <tr><th>Item</th><tr>
-    <tr><td><input type="text" name="1"></td><tr>
-    <tr><td><input type="text" name="2"></td><tr>
-    <tr><td><center>[*1]</center></td></tr>
-    <tr><td><center>...</center></td></tr>
-  </table>
-  <input type="submit" name="createNewList" value="Save new list">
-</form>
+<form action="addListProcess.php" method="post">
+	<p>List title: <input type="text" name="listName" maxlength="30" autofocus required ></p>
 
-<p>[*1] Will add PHP here to dynamically add another list item here when the last item has a value entered</p>
-<p>[*2] Will specify the action here one I get this POSTing thing figured out</p>
+	<input type="submit" value="Create">
+</form>
 <?php include "footer.php"; ?>

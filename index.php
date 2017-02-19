@@ -1,8 +1,5 @@
 <?php include "header.php"; ?>
-		  So the links above were not intentional, but it actually looks kinda good... I can fix it if you hate it. 
+		  <p>Hello World</p>
 
-
-		  This is some more text....
-		  Hello world
-		  lines of text
+		  <?php echo '<p>Current user\'s ID: '.$_SESSION['uid'].'</p>'; ?>
 <?php include "footer.php"; ?>
