@@ -75,7 +75,13 @@ if ($result == false) {
 if ($permission == true) {
 
 	//Add new item to items table
-	$sql = 'INSERT INTO items (listID, val) VALUES ('.$_POST['lid'].', "'.$_POST['newItem'].'");';
+	require "security.php";
+	//echo 'Before: '.$_POST['newItem'].'<br>';
+	$string = h($_POST['newItem']);
+	//echo 'After: '.$string;
+
+
+	$sql = 'INSERT INTO items (listID, val) VALUES ('.$_POST['lid'].', "'.$string.'");';
 	$database->exec($sql);
 	//echo 'A';
 	header('Location: '.$_SERVER['HTTTP_HOST'].'list.php?lid='.$_POST['lid'], 303);

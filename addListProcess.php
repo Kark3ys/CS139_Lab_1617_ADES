@@ -13,7 +13,9 @@ require 'database.php';
 $database = new Database();
 
 //Adding new list
-$sql = "INSERT INTO lists (name) VALUES ('".$_POST['listName']."');";
+require "security.php";
+$string = h($_POST['listName']);
+$sql = "INSERT INTO lists (name) VALUES ('".$string."');";
 //echo 'Executing:  '.$sql.'   ...<br>';
 $database->exec($sql);
 //echo 'Success<br><br>';
