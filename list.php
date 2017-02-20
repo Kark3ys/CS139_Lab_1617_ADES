@@ -2,6 +2,7 @@
 <?php
 	if(empty($_GET) || empty($_GET["lid"]) || !is_numeric($_GET["lid"])) {
 		echo "No list found, go <a href='index.php'>home</a>.";
+		require_once "footer.php";
 		exit();
 	}
 	require_once 'database.php';
@@ -36,6 +37,7 @@
 		}
 		
 		echo "'>here</a> to go back.";
+		require_once "footer.php";
 		exit();
 	}
 	
@@ -70,4 +72,4 @@
 	}
 	//send lid as GET, and then check ownership of lid in addItemProcess.php IMMEDIATLEY before allowing the user to add the item, redirecting to an error page/back here if not. 
 ?>
-<?php require "footer.php"; ?>
+<?php require_once "footer.php"; ?>
