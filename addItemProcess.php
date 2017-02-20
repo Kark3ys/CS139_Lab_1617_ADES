@@ -78,9 +78,13 @@ if (empty($result)) {
 if ($permission == true) {
 
 	//Add new item to items table
+	require "security.php";
+	//echo 'Before: '.$_POST['newItem'].'<br>';
+	$string = h($_POST['newItem']);
+	//echo 'After: '.$string;
 	$stmt = $db->prepare("INSERT INTO items (listID, val) VALUES (:lid, :nitem);");
 	$stmt->bindValue(":lid", $_POST['lid'], SQLITE3_INTEGER);
-	$stmt->bindValue(":nitem", $_POST['newItem'], SQLITE3_TEXT);
+	$stmt->bindValue(":nitem", $string, SQLITE3_TEXT);
 	$stmt->execute();
 	//echo 'A';
 	header('Location: '.$_SERVER['HTTTP_HOST'].'list.php?lid='.$_POST['lid'], 303);

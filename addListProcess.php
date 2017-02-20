@@ -13,8 +13,10 @@ require 'database.php';
 $db = new Database();
 
 //Adding new list
+require "security.php";
+$string = h($_POST['listName']);
 $stmt = $db->prepare("INSERT INTO lists (name) VALUES (:ln);");
-$stmt->bindValue(":ln", $_POST['listName'], SQLITE3_TEXT);
+$stmt->bindValue(":ln", $string, SQLITE3_TEXT);
 //echo 'Executing:  '.$sql.'   ...<br>';
 $stmt->execute();
 //echo 'Success<br><br>';
