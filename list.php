@@ -8,17 +8,23 @@
 	$db = new Database();
 	$showList = false;
 	$editList = false;
-	$listData = $db->querySingle("SELECT * FROM lists WHERE listID=" . $_GET["lid"]);
+	$lid = $_GET["lid"];
+	$stmt = $db->prepare("SELECT * FROM lists WHERE listID=:lid");
+	$stmt->bindValue(":lid", $lid, SQLITE3_INTEGER);
+	$sqlResult = $stmt->execute();
+	$listData = $sqlResult->fetchArray();
 	$listPerm = $listData["defperm"];
 	if ($listPerm == 1) $showList = true;
 	if (isset($_SESSION) && !empty($_SESSION["uid"])) {
-		if (!$showList) {
-			$result = $db->querySingle("SELECT perm FROM listRel WHERE userID=" .
-				$_SESSION["uid"] . " AND listID=" . $_GET["lid"]);
-			if (!empty($result)) {
-				$showList = true;
-				if ($result["perm"] < 2) $editList = true;
-			}
+		$uid = $_SESSION["uid"];
+		$stmt = $db->prepare("SELECT perm FROM listRel WHERE userID=:uid AND listID=:lid");
+		$stmt->bindValue(":uid", $uid, SQLITE3_INTEGER);
+		$stmt->bindValue(":lid", $lid, SQLITE3_INTEGER);
+		$sqlResult = $stmt->execute();
+		$result = $sqlResult->fetchArray();
+		if (!empty($result)) {
+			$showList = true;
+			if ($result["perm"] < 2) $editList = true;
 		}
 	}
 	if (!$showList) {
@@ -35,10 +41,11 @@
 	
 	echo "<form>";
 	echo "<h2 id='listTitle'>".$listData["name"]."</h2>";
-	$listItems = $db->query("SELECT * FROM items 
+	$stmt=$db->prepare("SELECT * FROM items 
 		INNER JOIN lists ON items.listID = lists.listID 
-		WHERE items.listID =" . $_GET["lid"] . " 
-		ORDER BY items.itemID;");
+		WHERE items.listID = :lid ORDER BY items.itemID");
+	$stmt->bindValue(":lid", $lid, SQLITE3_INTEGER);
+	$listItems = $stmt->execute();
 	echo "<div id='listView'>\n
 		\t<table>\n
 		\t<tbody>\n";
@@ -58,7 +65,9 @@
 	}
 
 	//echo $_GET['lid']; //Testing
-	echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
+	if($editList) {
+		echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
+	}
 	//send lid as GET, and then check ownership of lid in addItemProcess.php IMMEDIATLEY before allowing the user to add the item, redirecting to an error page/back here if not. 
 ?>
 <?php require "footer.php"; ?>

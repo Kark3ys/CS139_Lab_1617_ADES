@@ -14,8 +14,8 @@ ini_set(“display_errors”, 1);
 	//If not owned - redirect to [list page OR error page?]
 
 //Create database
-require 'database.php';
-$database = new Database();
+require_once 'database.php';
+$db = new Database();
 
 //OLD-->
 /*
@@ -50,20 +50,23 @@ echo '<br><br> --- ---';
 //if BOTH of these are the case, as single value will be returned. If any value is returned, we can therefore assume ownership. 
 
 
-$sql = 'SELECT lists.listID FROM lists 
-INNER JOIN listRel ON lists.listID=listRel.listID
-INNER JOIN users ON listRel.userID=users.userID
-WHERE listRel.userID='.$_SESSION['uid'].' AND lists.listID='.$_POST['lid'].';';
 //var_dump($sql);
 
-$results = $database->query($sql);
+$stmt = $db->prepare("SELECT lists.listID FROM lists 
+INNER JOIN listRel ON lists.listID=listRel.listID
+INNER JOIN users ON listRel.userID=users.userID
+WHERE listRel.userID=:uid AND lists.listID=:lid;");
+$stmt->bindValue(":uid", $_SESSION['uid'], SQLITE3_INTEGER);
+$stmt->bindValue(":lid", $_POST['lid'], SQLITE3_INTEGER);
+
+$results = $stmt->execute();
 $result = $results->fetchArray();
 
 
 //FetchArray() will return an appropriate array, OR false IF NONE TO RETURN - therefore we can establish if a user has permission as follows:
 $permission=true;
 //var_dump($result);
-if ($result == false) { 
+if (empty($result)) { 
 	$permission=false;
 }
 //var_dump($permission);
@@ -79,10 +82,10 @@ if ($permission == true) {
 	//echo 'Before: '.$_POST['newItem'].'<br>';
 	$string = h($_POST['newItem']);
 	//echo 'After: '.$string;
-
-
-	$sql = 'INSERT INTO items (listID, val) VALUES ('.$_POST['lid'].', "'.$string.'");';
-	$database->exec($sql);
+	$stmt = $db->prepare("INSERT INTO items (listID, val) VALUES (:lid, :nitem);");
+	$stmt->bindValue(":lid", $_POST['lid'], SQLITE3_INTEGER);
+	$stmt->bindValue(":nitem", $string, SQLITE3_TEXT);
+	$stmt->execute();
 	//echo 'A';
 	header('Location: '.$_SERVER['HTTTP_HOST'].'list.php?lid='.$_POST['lid'], 303);
 

@@ -28,7 +28,10 @@ $isLog = !empty($_SESSION["uid"]);
 		<?php if($isLog){
 			echo '<a href="settings.php">';
 			$db = new Database();
-			$result = $db->querySingle("SELECT username FROM users WHERE userid =" . $_SESSION["uid"]);
+			$stmt = $db->prepare("SELECT username FROM users WHERE userid = :uid;");
+			$stmt->bindValue(":uid", $_SESSION["uid"], SQLITE3_INTEGER);
+			$sqlResult = $stmt->execute();
+			$result = $sqlResult->fetchArray();
 			echo $result["username"];
 			echo '</a>' . "\n";
 			echo "\t\t" . '<a href="folder.php">Folder</a>' . "\n";
