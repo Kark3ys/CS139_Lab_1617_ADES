@@ -2,7 +2,10 @@
 require 'database.php';
 $db = new Database();
 if(!empty($_POST["email"])) {
-	$result = $db->querySingle("SELECT * FROM users WHERE email='".$_POST["email"]."'");
+	$stmt = $db->prepare("SELECT * FROM users WHERE email=:email;");
+	$stmt->bindValue(":email", $_POST["email"], SQLITE3_TEXT);
+	$sqlResult = $stmt->execute();
+	$result = $sqlResult->fetchArray();
 	if(!empty($result)) {
 		if(sha1($result["salt"]."--".$_POST["pass"]) == $result["pass"]) {
 			session_start();
