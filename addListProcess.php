@@ -10,16 +10,17 @@ ini_set(“display_errors”, 1);
 
 //Create database
 require 'database.php';
-$database = new Database();
+$db = new Database();
 
 //Adding new list
-$sql = "INSERT INTO lists (name) VALUES ('".$_POST['listName']."');";
+$stmt = $db->prepare("INSERT INTO lists (name) VALUES (:ln);");
+$stmt->bindValue(":ln", $_POST['listName'], SQLITE3_TEXT);
 //echo 'Executing:  '.$sql.'   ...<br>';
-$database->exec($sql);
+$stmt->execute();
 //echo 'Success<br><br>';
 
 //Retrieving the corresponding listID:
-$listID = $database->lastInsertRowID();
+$listID = $db->lastInsertRowID();
 /* 
 echo '<p>listID: '.$listID.'</p>';
 echo 'Session: ';
@@ -30,10 +31,12 @@ echo '<br>';
 */
 
 //Ensuring relation is established between this new list ^, and the user that created it
-$sql = "INSERT INTO listRel(userID, listID, perm) VALUES (".$_SESSION['uid'].", ".$listID.",0);";
+$stmt = $db->prepare("INSERT INTO listRel(userID, listID, perm) VALUES (:uid, :lid, 0);");
+$stmt->bindValue(":uid", $_SESSION['uid'], SQLITE3_INTEGER);
+$stmt->bindValue(":lid", $listID, SQLITE3_INTEGER);
 //var_dump($sql);
 //echo 'Executing:  '.$sql.'   ...<br>';
-$database->exec($sql);
+$stmt->execute();
 //echo 'Success<br><br>';
 
 

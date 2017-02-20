@@ -8,6 +8,6 @@ echo '<p>Adding to listID: '.$_GET['lid'].'</p>';
 	<input type="text" name="newItem" maxlength="30" autofocus required >
 	<?php echo '<input type="hidden" name="lid" value="'.$_GET['lid'].'" >'; ?>
 	<input type="submit" value="Add">
-</form>
+</form> 
 
 <?php require "footer.php"; ?>
