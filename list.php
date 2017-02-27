@@ -82,36 +82,6 @@
 	<?php echo '<input type="hidden" name="uid" value="'.$_SESSION['uid'].'" >'; ?>
 </form>
 <button id="addItemButton">Submit</button>
-<p id="retstuff"></p>
-<script>
-
-$(document).ready(function () {
-
-	$("#addItemButton").click(function() {
-		//alert("Form has been submitted. ");//Testing alert
-
-		//Data retrieval (input, list):
-		var input = $("#addItemForm input[name='newItem']").val();//Retrieve the new item input from the form
-		var list = $("#addItemForm input[name='lid']").attr('value');//Retrieve the list to be submitted to the processing file
-		//alert(input +  " " + list);
-
-		//Sending this data to the processing file:
-		$.post( "addItemAJAX.php",
-			{lid:list, newItem:input},
-			function ( data, status ) {//Action to be carried out on processing script completion, to update the page to include the item
-				$("#retstuff").html("Hey"); 
-				$("#listView table tbody").append("<tr id='" + data + "'><td><input type='checkbox' name='" + data + "' ></td><td>" + input + "</td></tr>");
-				$("#addItemForm input[name='newItem']").val("");
-
-			});//.done(function(){alert("Post Done");}).fail(function(){alert("Post Fail");});
-
-		return false;
-		});
-
-
-
-});
-
-</script>
+<script src="js/addItemProcess.js" type="text/javascript"></script>
 
 <?php require_once "footer.php"; ?>
