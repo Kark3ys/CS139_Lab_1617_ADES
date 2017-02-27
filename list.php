@@ -66,10 +66,52 @@
 		echo '<p><em>This list has no items...</em></p>';
 	}
 
-	//echo $_GET['lid']; //Testing
 	if($editList) {
-		echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
+
+		//OLD addItem:
+		//echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
 	}
 	//send lid as GET, and then check ownership of lid in addItemProcess.php IMMEDIATLEY before allowing the user to add the item, redirecting to an error page/back here if not. 
 ?>
+
+
+
+<form action="" method="" id="addItemForm">
+	<input type="text" name="newItem" maxlength="30" pattern="[a-zA-Z0-9]+" autofocus required >
+	<?php echo '<input type="hidden" name="lid" value="'.$_GET['lid'].'" >'; ?>
+	<?php echo '<input type="hidden" name="uid" value="'.$_SESSION['uid'].'" >'; ?>
+</form>
+<button id="addItemButton">Submit</button>
+<p id="retstuff"></p>
+<script>
+
+$(document).ready(function () {
+
+	$("#addItemButton").click(function() {
+		//alert("Form has been submitted. ");//Testing alert
+
+		//Data retrieval (input, list):
+		var input = $("#addItemForm input[name='newItem']").val();//Retrieve the new item input from the form
+		var list = $("#addItemForm input[name='lid']").attr('value');//Retrieve the list to be submitted to the processing file
+		//alert(input +  " " + list);
+
+		//Sending this data to the processing file:
+		$.post( "addItemAJAX.php",
+			{lid:list, newItem:input},
+			function ( data, status ) {//Action to be carried out on processing script completion, to update the page to include the item
+				$("#retstuff").html("Hey"); 
+				$("#listView table tbody").append("<tr id='" + data + "'><td><input type='checkbox' name='" + data + "' ></td><td>" + input + "</td></tr>");
+				$("#addItemForm input[name='newItem']").val("");
+
+			});//.done(function(){alert("Post Done");}).fail(function(){alert("Post Fail");});
+
+		return false;
+		});
+
+
+
+});
+
+</script>
+
 <?php require_once "footer.php"; ?>
