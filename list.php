@@ -1,3 +1,4 @@
+
 <?php require "header.php"; ?>
 <?php
 	if(empty($_GET) || empty($_GET["lid"]) || !is_numeric($_GET["lid"])) {
@@ -65,23 +66,22 @@
 	if (!$itemExists) {
 		echo '<p><em>This list has no items...</em></p>';
 	}
-
 	if($editList) {
-
-		//OLD addItem:
-		//echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
+		echo '
+			<p id="holder"></p>
+			<p id="result"></p>';
+		echo '<script src="js/check_script.js"></script>';
+		echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
+    echo '<form action="" method="" id="addItemForm">
+    	<input type="text" name="newItem" maxlength="30" pattern="[a-zA-Z0-9]+" autofocus required >';
+    echo '<input type="hidden" name="lid" value="'.$_GET['lid'].'" >';
+    echo '<input type="hidden" name="uid" value="'.$_SESSION['uid'].'" >';
+    echo '
+    </form>
+    <button id="addItemButton">Submit</button>
+    <script src="js/addItemProcess.js" type="text/javascript"></script>';
 	}
-	//send lid as GET, and then check ownership of lid in addItemProcess.php IMMEDIATLEY before allowing the user to add the item, redirecting to an error page/back here if not. 
+	
 ?>
-
-
-
-<form action="" method="" id="addItemForm">
-	<input type="text" name="newItem" maxlength="30" pattern="[a-zA-Z0-9]+" autofocus required >
-	<?php echo '<input type="hidden" name="lid" value="'.$_GET['lid'].'" >'; ?>
-	<?php echo '<input type="hidden" name="uid" value="'.$_SESSION['uid'].'" >'; ?>
-</form>
-<button id="addItemButton">Submit</button>
-<script src="js/addItemProcess.js" type="text/javascript"></script>
 
 <?php require_once "footer.php"; ?>
