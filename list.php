@@ -56,18 +56,23 @@
 		$itemExists=true;
 		$iid = $item["itemID"];
 		echo "\t\t<tr id='" .$iid . "'>
-		<td><input type='checkbox' name='" . $iid . "[checked]'";
+		<td><input type='checkbox' name='" . $iid . "'";
 		if ($item["checked"] != 0) echo " checked";
+		if (!$editList) echo " disabled";
 		echo "></td>\n\t\t<td>" . $item["val"] . "</td>\n\t\t</tr>\n\n";
 	}
 	echo "\t</tbody>\n\t</table>\n</div>\n</form>";
-
+	
 	if (!$itemExists) {
 		echo '<p><em>This list has no items...</em></p>';
 	}
 
 	//echo $_GET['lid']; //Testing
 	if($editList) {
+		echo '
+			<p id="holder"></p>
+			<p id="result"></p>';
+		echo '<script src="js/check_script.js"></script>';
 		echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
 	}
 	//send lid as GET, and then check ownership of lid in addItemProcess.php IMMEDIATLEY before allowing the user to add the item, redirecting to an error page/back here if not. 
