@@ -22,11 +22,6 @@
 						<input type="submit" value="Register" />
 					</form>
 				</div>
-				<div class="loginBox">
-				</div>
-				
-				<div class="loginBox">
-				</div>
 			</div>
 		</main>
 <?php require "footer.php"; ?>
