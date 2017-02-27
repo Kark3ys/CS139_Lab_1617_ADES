@@ -59,6 +59,7 @@
 		echo "\t\t<tr id='" .$iid . "'>
 		<td><input type='checkbox' name='" . $iid . "[checked]'";
 		if ($item["checked"] != 0) echo " checked";
+		if (!$editList) echo " disabled";
 		echo "></td>\n\t\t<td>" . $item["val"] . "</td>\n\t\t</tr>\n\n";
 	}
 	echo "\t</tbody>\n\t</table>\n</div>\n</form>";
@@ -71,13 +72,9 @@
 			<p id="holder"></p>
 			<p id="result"></p>';
 		echo '<script src="js/check_script.js"></script>';
-		echo '<a href="addItem.php?lid='.$_GET['lid'].'">Add Item</a>';
-    echo '<form action="" method="" id="addItemForm">
-    	<input type="text" name="newItem" maxlength="30" pattern="[a-zA-Z0-9]+" autofocus required >';
+    echo '<input type="text" name="newItem" maxlength="30" pattern="[a-zA-Z0-9]+">';
     echo '<input type="hidden" name="lid" value="'.$_GET['lid'].'" >';
-    echo '<input type="hidden" name="uid" value="'.$_SESSION['uid'].'" >';
     echo '
-    </form>
     <button id="addItemButton">Submit</button>
     <script src="js/addItemProcess.js" type="text/javascript"></script>';
 	}
