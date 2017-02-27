@@ -13,6 +13,7 @@ $isLog = !empty($_SESSION["uid"]);
 	<meta charset="UTF-8" />
 	<title>ToDo.list</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 	<div id="ocwrap">
